@@ -3,8 +3,9 @@ class DefaultCharacter {
 	y = 400;
 	img;
 
-	constructor(img) {
-		this.img = img;
+	loadImageForBody(imgPath) {
+		this.img = new Image();
+		this.img.src = imgPath;
 	}
 
 	moveRight() {
