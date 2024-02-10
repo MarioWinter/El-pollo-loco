@@ -3,6 +3,7 @@ class World {
 	enemies = [new Chicken(), new Chicken(), new Chicken()];
 	ctx;
 	canvas;
+	clouds = [new Cloud()];
 
 	constructor(canvas) {
 		this.ctx = canvas.getContext("2d");
@@ -27,6 +28,16 @@ class World {
 				enemy.y,
 				enemy.width,
 				enemy.height
+			);
+		});
+
+		this.clouds.forEach((cloud) => {
+			this.ctx.drawImage(
+				cloud.img,
+				cloud.x,
+				cloud.y,
+				cloud.width,
+				cloud.height
 			);
 		});
 
