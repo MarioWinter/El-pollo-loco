@@ -1,5 +1,5 @@
 class DefaultCharacter {
-	x = 120;
+	x;
 	y = 250;
 	height = 150;
 	width = 100;
