@@ -1,8 +1,8 @@
 class DefaultCharacter {
 	x;
-	y = 250;
-	height = 150;
-	width = 100;
+	y = 100;
+	height = 350;
+	width = 150;
 	img;
 
 	loadImageForBody(imgPath) {
