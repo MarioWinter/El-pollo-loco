@@ -11,6 +11,7 @@ class World {
 	}
 
 	drawCharacter() {
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.ctx.drawImage(
 			this.character.img,
 			this.character.x,
@@ -19,11 +20,18 @@ class World {
 			this.character.height
 		);
 
-		let self = this;
-		requestAnimationFrame(function () {
-			self.drawCharacter();
+		this.enemies.forEach((enemy) => {
+			this.ctx.drawImage(
+				enemy.img,
+				enemy.x,
+				enemy.y,
+				enemy.width,
+				enemy.height
+			);
+		});
+
+		requestAnimationFrame(() => {
+			this.drawCharacter();
 		});
 	}
-
-	drawChickenEnemies() {}
 }
