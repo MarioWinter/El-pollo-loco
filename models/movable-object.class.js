@@ -1,4 +1,4 @@
-class DefaultCharacter {
+class MovableObject {
 	x;
 	y = 100;
 	height = 350;
