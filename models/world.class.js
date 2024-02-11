@@ -1,8 +1,8 @@
 class World {
-	character = new Character();
-	enemies = [new Chicken(), new Chicken(), new Chicken()];
 	ctx;
 	canvas;
+	character = new Character();
+	enemies = [new Chicken(), new Chicken(), new Chicken()];
 	clouds = [new Cloud()];
 	backgroundObject = [
 		new BackgroundObject(
@@ -19,10 +19,10 @@ class World {
 
 	drawCharacter() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.addObjectsToCanvas(this.backgroundObject);
+		this.addObjectsToCanvas(this.clouds);
 		this.drawOnCanvas(this.character);
 		this.addObjectsToCanvas(this.enemies);
-		this.addObjectsToCanvas(this.clouds);
-		this.addObjectsToCanvas(this.backgroundObject);
 
 		requestAnimationFrame(() => {
 			this.drawCharacter();
