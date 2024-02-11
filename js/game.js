@@ -4,13 +4,12 @@ let windowWidth;
 let windowHeight;
 
 document.addEventListener("DOMContentLoaded", function () {
-	window.addEventListener("resize", adjustCanvasSize);
-	initGame();
+	//window.addEventListener("resize", adjustCanvasSize);
 });
 
 function initGame() {
 	canvas = document.getElementById("myCanvas");
-	adjustCanvasSize();
+	//adjustCanvasSize();
 	world = new World(canvas);
 
 	console.log(world.character);
@@ -18,9 +17,6 @@ function initGame() {
 }
 
 function adjustCanvasSize() {
-	windowWidth = window.innerWidth * 0.7;
-	windowHeight = windowWidth * (3 / 4);
-	canvasFrame = document.getElementById("myCanvas");
-	canvasFrame.width = windowWidth;
-	canvasFrame.height = windowHeight;
+	windowWidth = canvas.clientWidth;
+	windowHeight = canvas.clientHeight;
 }
