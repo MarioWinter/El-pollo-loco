@@ -6,9 +6,8 @@ class World {
 	clouds = [new Cloud()];
 	backgroundObject = [
 		new BackgroundObject(
-			"./img/5_background/layers/3_third_layer/2.png",
-			0,
-			150
+			"./img/5_background/layers/3_third_layer/1.png",
+			0
 		),
 	];
 
