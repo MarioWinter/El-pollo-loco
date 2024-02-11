@@ -1,7 +1,7 @@
 class MovableObject {
 	x;
-	y = 100;
-	height = 350;
+	y = windowHeight * 0.35;
+	height = 400;
 	width = 150;
 	img;
 
