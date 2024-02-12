@@ -3,10 +3,19 @@ class MovableObject {
 	width = 310;
 	height = 610;
 	img;
+	ImagesForMovement = {};
 
 	loadImage(imgPath) {
 		this.img = new Image();
 		this.img.src = imgPath;
+	}
+
+	loadImagesForMovement(movementImgs) {
+		movementImgs.forEach(() => {
+			let img = new Image();
+			img.src = path;
+			this.ImagesForMovement[path] = path;
+		});
 	}
 
 	moveRight() {
