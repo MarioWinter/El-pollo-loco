@@ -11,10 +11,10 @@ class MovableObject {
 	}
 
 	loadImagesForMovement(movementImgs) {
-		movementImgs.forEach(() => {
+		movementImgs.forEach((path) => {
 			let img = new Image();
 			img.src = path;
-			this.ImagesForMovement[path] = path;
+			this.ImagesForMovement[path] = img;
 		});
 	}
 
