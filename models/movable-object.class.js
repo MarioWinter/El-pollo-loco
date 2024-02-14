@@ -4,6 +4,9 @@ class MovableObject {
 	height = 610;
 	img;
 	ImagesForMovement = {};
+	IMGAGES_WALKING = [];
+	currentImageStep = 0;
+	speed = 0.1;
 
 	loadImage(imgPath) {
 		this.img = new Image();
@@ -18,11 +21,24 @@ class MovableObject {
 		});
 	}
 
+	animate(animateTime) {
+		setInterval(() => {
+			let step = this.currentImageStep % this.IMGAGES_WALKING.length;
+			let path = this.IMGAGES_WALKING[step];
+			this.img = this.ImagesForMovement[path];
+			this.currentImageStep++;
+		}, animateTime);
+	}
+
 	moveRight() {
-		console.log("Moving right");
+		setInterval(() => {
+			this.x += this.speed;
+		}, 1000 / 60);
 	}
 
 	moveLeft() {
-		console.log("Moving left");
+		setInterval(() => {
+			this.x -= this.speed;
+		}, 1000 / 60);
 	}
 }
