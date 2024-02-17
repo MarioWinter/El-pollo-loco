@@ -21,15 +21,6 @@ class MovableObject {
 		});
 	}
 
-	animate(animateTime) {
-		setInterval(() => {
-			let step = this.currentImageStep % this.IMGAGES_WALKING.length;
-			let path = this.IMGAGES_WALKING[step];
-			this.img = this.ImagesForMovement[path];
-			this.currentImageStep++;
-		}, animateTime);
-	}
-
 	moveRight() {
 		setInterval(() => {
 			this.x += this.speed;
