@@ -26,15 +26,16 @@ class Character extends MovableObject {
 		setInterval(() => {
 			if (this.world.keyboard.RIGHT) {
 				this.x += this.speed;
+				this.flipObjectDirection = false;
 			}
 			if (this.world.keyboard.LEFT) {
 				this.x -= this.speed;
+				this.flipObjectDirection = true;
 			}
 		}, 1000 / 60);
 
 		setInterval(() => {
 			if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-				this.x += this.speed;
 				let step = this.currentImageStep % this.IMGAGES_WALKING.length;
 				let path = this.IMGAGES_WALKING[step];
 				this.img = this.ImagesForMovement[path];

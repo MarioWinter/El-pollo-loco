@@ -52,6 +52,12 @@ class World {
 	}
 
 	drawOnCanvas(motif) {
+		if (motif.flipObjectDirection) {
+			this.ctx.save();
+			this.ctx.translate(motif.width, 0);
+			this.ctx.scale(-1, 1);
+			motif.x = motif.x * -1;
+		}
 		this.ctx.drawImage(
 			motif.img,
 			motif.x,
@@ -59,5 +65,9 @@ class World {
 			motif.width,
 			motif.height
 		);
+		if (motif.flipObjectDirection) {
+			motif.x = motif.x * -1;
+			this.ctx.restore();
+		}
 	}
 }

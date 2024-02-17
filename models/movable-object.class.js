@@ -7,6 +7,7 @@ class MovableObject {
 	IMGAGES_WALKING = [];
 	currentImageStep = 0;
 	speed = 0.1;
+	flipObjectDirection = false;
 
 	loadImage(imgPath) {
 		this.img = new Image();
