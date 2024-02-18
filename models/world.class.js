@@ -5,24 +5,11 @@ class World {
 	character = new Character();
 	enemies = [new Chicken(), new Chicken(), new Chicken()];
 	clouds = [new Cloud()];
-	backgroundObject = [
-		new BackgroundObject("./img/5_background/layers/air.png", 0),
-		new BackgroundObject(
-			"./img/5_background/layers/3_third_layer/1.png",
-			0
-		),
-		new BackgroundObject(
-			"./img/5_background/layers/2_second_layer/1.png",
-			0
-		),
-		new BackgroundObject(
-			"./img/5_background/layers/1_first_layer/1.png",
-			0
-		),
-	];
+	backgroundObject;
 	camera_x = 0;
 
 	constructor(canvas, keyboard) {
+		this.endlessBackground();
 		this.ctx = canvas.getContext("2d");
 		this.canvas = canvas;
 		this.keyboard = keyboard;
@@ -71,5 +58,39 @@ class World {
 			motif.x = motif.x * -1;
 			this.ctx.restore();
 		}
+	}
+
+	endlessBackground() {
+		let backround = [];
+		let index = 2;
+		let imgSize = -2560;
+		for (let i = 1; i < 10; i++) {
+			backround.push(
+				new BackgroundObject(
+					`./img/5_background/layers/air.png`,
+					imgSize
+				),
+				new BackgroundObject(
+					`./img/5_background/layers/3_third_layer/${index}.png`,
+					imgSize
+				),
+				new BackgroundObject(
+					`./img/5_background/layers/2_second_layer/${index}.png`,
+					imgSize
+				),
+				new BackgroundObject(
+					`./img/5_background/layers/1_first_layer/${index}.png`,
+					imgSize
+				)
+			);
+
+			imgSize = imgSize + 2560;
+			if (index === 1) {
+				index = 2;
+			} else {
+				index = 1;
+			}
+		}
+		this.backgroundObject = backround;
 	}
 }
