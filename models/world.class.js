@@ -20,6 +20,7 @@ class World {
 			0
 		),
 	];
+	camera_x = 0;
 
 	constructor(canvas, keyboard) {
 		this.ctx = canvas.getContext("2d");
@@ -35,11 +36,12 @@ class World {
 
 	drawCharacter() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.ctx.translate(this.camera_x, 0);
 		this.addObjectsToCanvas(this.backgroundObject);
 		this.addObjectsToCanvas(this.clouds);
 		this.drawOnCanvas(this.character);
 		this.addObjectsToCanvas(this.enemies);
-
+		this.ctx.translate(-this.camera_x, 0);
 		requestAnimationFrame(() => {
 			this.drawCharacter();
 		});
