@@ -3,13 +3,15 @@ class World {
 	canvas;
 	keyboard;
 	character = new Character();
-	enemies = [new Chicken(), new Chicken(), new Chicken()];
-	clouds = [new Cloud()];
-	backgroundObject;
+	//enemies = [new Chicken(), new Chicken(), new Chicken()];
+	//clouds = [new Cloud()];
+	enemies = level1.enemies;
+	clouds = level1.clouds;
+	backgroundObject = level1.backgroundObject;
 	camera_x = 0;
 
 	constructor(canvas, keyboard) {
-		this.endlessBackground();
+		//this.endlessBackground();
 		this.ctx = canvas.getContext("2d");
 		this.canvas = canvas;
 		this.keyboard = keyboard;
