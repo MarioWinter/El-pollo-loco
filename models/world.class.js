@@ -3,11 +3,7 @@ class World {
 	canvas;
 	keyboard;
 	character = new Character();
-	//enemies = [new Chicken(), new Chicken(), new Chicken()];
-	//clouds = [new Cloud()];
-	enemies = level1.enemies;
-	clouds = level1.clouds;
-	backgroundObject = level1.backgroundObject;
+	level = level1;
 	camera_x = 0;
 
 	constructor(canvas, keyboard) {
@@ -26,10 +22,10 @@ class World {
 	drawCharacter() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.ctx.translate(this.camera_x, 0);
-		this.addObjectsToCanvas(this.backgroundObject);
-		this.addObjectsToCanvas(this.clouds);
+		this.addObjectsToCanvas(this.level.backgroundObject);
+		this.addObjectsToCanvas(this.level.clouds);
+		this.addObjectsToCanvas(this.level.enemies);
 		this.drawOnCanvas(this.character);
-		this.addObjectsToCanvas(this.enemies);
 		this.ctx.translate(-this.camera_x, 0);
 		requestAnimationFrame(() => {
 			this.drawCharacter();
