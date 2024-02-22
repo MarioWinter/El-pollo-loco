@@ -24,8 +24,8 @@ class World {
 		this.ctx.translate(this.camera_x, 0);
 		this.addObjectsToCanvas(this.level.backgroundObject);
 		this.addObjectsToCanvas(this.level.clouds);
-		this.addObjectsToCanvas(this.level.enemies);
 		this.drawOnCanvas(this.character);
+		this.addObjectsToCanvas(this.level.enemies);
 		this.ctx.translate(-this.camera_x, 0);
 		requestAnimationFrame(() => {
 			this.drawCharacter();
