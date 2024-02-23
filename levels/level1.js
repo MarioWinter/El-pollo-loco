@@ -101,7 +101,8 @@ const level1 = new Level(
 			`./img/5_background/layers/1_first_layer/2.png`,
 			2560 * 5
 		),
-	]
+	],
+	[new Coins(), new Coins(), new Coins()]
 );
 
 // function endlessBackground() {
