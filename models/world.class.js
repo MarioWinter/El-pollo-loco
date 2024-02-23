@@ -11,7 +11,7 @@ class World {
 		this.ctx = canvas.getContext("2d");
 		this.canvas = canvas;
 		this.keyboard = keyboard;
-		this.drawCharacter();
+		this.draw();
 		this.setWorld();
 	}
 
@@ -19,7 +19,7 @@ class World {
 		this.character.world = this;
 	}
 
-	drawCharacter() {
+	draw() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		this.ctx.translate(this.camera_x, 0);
 		this.addObjectsToCanvas(this.level.backgroundObject);
@@ -28,7 +28,7 @@ class World {
 		this.addObjectsToCanvas(this.level.enemies);
 		this.ctx.translate(-this.camera_x, 0);
 		requestAnimationFrame(() => {
-			this.drawCharacter();
+			this.draw();
 		});
 	}
 
