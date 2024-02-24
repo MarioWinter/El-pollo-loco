@@ -1,3 +1,6 @@
+let cloudType1 = "./img/5_background/layers/4_clouds/2.png";
+let cloudType2 = "./img/5_background/layers/4_clouds/2.png";
+
 const level1 = new Level(
 	[
 		new Chicken(),
@@ -8,7 +11,13 @@ const level1 = new Level(
 		new Chicks(),
 		new Chicks(),
 	],
-	[new Cloud()],
+	[
+		new Cloud(cloudType1),
+		new Cloud(cloudType2),
+		new Cloud(cloudType1),
+		new Cloud(cloudType2),
+		new Cloud(cloudType1),
+	],
 	[
 		new BackgroundObject(`./img/5_background/layers/air.png`, -2560),
 		new BackgroundObject(
