@@ -1,5 +1,5 @@
 class MovableObject {
-	y = 680;
+	y = 660;
 	width = 310;
 	height = 610;
 	img;
@@ -8,6 +8,17 @@ class MovableObject {
 	currentImageStep = 0;
 	speed = 0.1;
 	flipObjectDirection = false;
+	speedY = 5;
+	acceleration = 2;
+
+	applayGravity() {
+		setInterval(() => {
+			if (this.y < 633) {
+				this.y -= this.speedY;
+				this.speedY -= this.acceleration;
+			}
+		}, 1000 / 25);
+	}
 
 	loadImage(imgPath) {
 		this.img = new Image();
