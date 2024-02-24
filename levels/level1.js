@@ -111,7 +111,28 @@ const level1 = new Level(
 			2560 * 5
 		),
 	],
-	[new Coins(), new Coins(), new Coins()]
+	[
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Coins(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+		new Bottle(),
+	]
 );
 
 // function endlessBackground() {
