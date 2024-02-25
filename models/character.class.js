@@ -1,5 +1,5 @@
 class Character extends MovableObject {
-	y = 0;
+	y = 660;
 	width = 310;
 	height = 610;
 	world;
@@ -24,7 +24,6 @@ class Character extends MovableObject {
 		"./img/2_character_pepe/3_jump/J-39.png",
 	];
 	walking_sound = new Audio("audio/running.mp3");
-
 	constructor() {
 		super().loadImage(this.IMGAGES_WALKING[0]);
 		this.x = 100;
@@ -33,8 +32,6 @@ class Character extends MovableObject {
 		this.animate();
 		this.applayGravity();
 	}
-
-	jump() {}
 
 	animate() {
 		setInterval(() => {
@@ -54,6 +51,10 @@ class Character extends MovableObject {
 				this.x -= this.speed;
 				this.flipObjectDirection = true;
 				this.walking_sound.play();
+			}
+
+			if (this.world.keyboard.SPACE) {
+				this.speedY = 20;
 			}
 
 			this.world.camera_x = -this.x + 200;
