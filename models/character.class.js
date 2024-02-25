@@ -12,12 +12,24 @@ class Character extends MovableObject {
 		"./img/2_character_pepe/2_walk/W-25.png",
 		"./img/2_character_pepe/2_walk/W-26.png",
 	];
+	IMGAGES_JUMPING = [
+		"./img/2_character_pepe/3_jump/J-31.png",
+		"./img/2_character_pepe/3_jump/J-32.png",
+		"./img/2_character_pepe/3_jump/J-33.png",
+		"./img/2_character_pepe/3_jump/J-34.png",
+		"./img/2_character_pepe/3_jump/J-35.png",
+		"./img/2_character_pepe/3_jump/J-36.png",
+		"./img/2_character_pepe/3_jump/J-37.png",
+		"./img/2_character_pepe/3_jump/J-38.png",
+		"./img/2_character_pepe/3_jump/J-39.png",
+	];
 	walking_sound = new Audio("audio/running.mp3");
 
 	constructor() {
 		super().loadImage(this.IMGAGES_WALKING[0]);
 		this.x = 100;
 		this.loadImagesForMovement(this.IMGAGES_WALKING);
+		this.loadImagesForMovement(this.IMGAGES_JUMPING);
 		this.animate();
 		this.applayGravity();
 	}
@@ -48,11 +60,12 @@ class Character extends MovableObject {
 		}, 1000 / 60);
 
 		setInterval(() => {
-			if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-				let step = this.currentImageStep % this.IMGAGES_WALKING.length;
-				let path = this.IMGAGES_WALKING[step];
-				this.img = this.ImagesForMovement[path];
-				this.currentImageStep++;
+			if (this.isAboveGround()) {
+				this.playAnimation(this.IMGAGES_JUMPING);
+			} else {
+				if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+					this.playAnimation(this.IMGAGES_WALKING);
+				}
 			}
 		}, 50);
 	}
