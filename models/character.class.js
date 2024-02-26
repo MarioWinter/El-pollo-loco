@@ -48,8 +48,7 @@ class Character extends MovableObject {
 				this.world.keyboard.LEFT &&
 				this.x > this.world.level.level_start_x
 			) {
-				this.x -= this.speed;
-				this.flipObjectDirection = true;
+				this.moveLeft(true);
 				this.walking_sound.play();
 			}
 
@@ -57,7 +56,7 @@ class Character extends MovableObject {
 				(this.world.keyboard.SPACE && !this.isAboveGround()) ||
 				(this.world.keyboard.UP && !this.isAboveGround())
 			) {
-				this.speedY = 35;
+				this.jump();
 			}
 
 			this.world.camera_x = -this.x + 200;

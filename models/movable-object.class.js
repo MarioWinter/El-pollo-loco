@@ -39,15 +39,17 @@ class MovableObject {
 	}
 
 	moveRight() {
-		setInterval(() => {
-			this.x += this.speed;
-		}, 1000 / 60);
+		this.x += this.speed;
+		this.flipObjectDirection = false;
 	}
 
-	moveLeft() {
-		setInterval(() => {
-			this.x -= this.speed;
-		}, 1000 / 60);
+	moveLeft(flipStatus) {
+		this.x -= this.speed;
+		this.flipObjectDirection = flipStatus;
+	}
+
+	jump() {
+		this.speedY = 35;
 	}
 
 	playAnimation(images) {
