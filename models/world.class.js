@@ -7,7 +7,6 @@ class World {
 	camera_x = 0;
 
 	constructor(canvas, keyboard) {
-		//this.endlessBackground();
 		this.ctx = canvas.getContext("2d");
 		this.canvas = canvas;
 		this.keyboard = keyboard;
@@ -41,52 +40,26 @@ class World {
 
 	drawOnCanvas(motif) {
 		if (motif.flipObjectDirection) {
-			this.ctx.save();
-			this.ctx.translate(motif.width, 0);
-			this.ctx.scale(-1, 1);
-			motif.x = motif.x * -1;
+			this.flipImage(motif);
 		}
 
 		motif.draw(this.ctx);
 		motif.drawFrame(this.ctx);
 
 		if (motif.flipObjectDirection) {
-			motif.x = motif.x * -1;
-			this.ctx.restore();
+			this.flipImageBack(motif);
 		}
 	}
 
-	endlessBackground() {
-		let backround = [];
-		let index = 2;
-		let imgSize = -2560;
-		for (let i = 1; i < 10; i++) {
-			backround.push(
-				new BackgroundObject(
-					`./img/5_background/layers/air.png`,
-					imgSize
-				),
-				new BackgroundObject(
-					`./img/5_background/layers/3_third_layer/${index}.png`,
-					imgSize
-				),
-				new BackgroundObject(
-					`./img/5_background/layers/2_second_layer/${index}.png`,
-					imgSize
-				),
-				new BackgroundObject(
-					`./img/5_background/layers/1_first_layer/${index}.png`,
-					imgSize
-				)
-			);
+	flipImage(motif) {
+		this.ctx.save();
+		this.ctx.translate(motif.width, 0);
+		this.ctx.scale(-1, 1);
+		motif.x = motif.x * -1;
+	}
 
-			imgSize = imgSize + 2560;
-			if (index === 1) {
-				index = 2;
-			} else {
-				index = 1;
-			}
-		}
-		this.backgroundObject = backround;
+	flipImageBack(motif) {
+		motif.x = motif.x * -1;
+		this.ctx.restore();
 	}
 }
