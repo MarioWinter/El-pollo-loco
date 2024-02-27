@@ -46,13 +46,10 @@ class World {
 			this.ctx.scale(-1, 1);
 			motif.x = motif.x * -1;
 		}
-		this.ctx.drawImage(
-			motif.img,
-			motif.x,
-			motif.y,
-			motif.width,
-			motif.height
-		);
+
+		motif.draw(this.ctx);
+		motif.drawFrame(this.ctx);
+
 		if (motif.flipObjectDirection) {
 			motif.x = motif.x * -1;
 			this.ctx.restore();
