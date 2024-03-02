@@ -34,6 +34,13 @@ class MovableObject {
 		);
 	}
 
+	hit() {
+		this.life -= 5;
+		if (this.life < 0) {
+			this.life = 0;
+		}
+	}
+
 	loadImage(imgPath) {
 		this.img = new Image();
 		this.img.src = imgPath;
