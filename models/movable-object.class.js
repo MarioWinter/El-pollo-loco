@@ -10,19 +10,28 @@ class MovableObject {
 	flipObjectDirection = false;
 	speedY = 5;
 	acceleration = 2;
+	life = 100;
 
 	applayGravity() {
 		setInterval(() => {
 			if (this.isAboveGround() || this.speedY > 0) {
 				this.y -= this.speedY;
 				this.speedY -= this.acceleration;
-				console.log(this.speedY);
 			}
 		}, 1000 / 25);
 	}
 
 	isAboveGround() {
 		return this.y < 633;
+	}
+
+	isColliding(mo) {
+		return (
+			this.x + this.width > mo.x &&
+			this.y + this.height > mo.y &&
+			this.x < mo.x &&
+			this.y < mo.y + mo.height
+		);
 	}
 
 	loadImage(imgPath) {
