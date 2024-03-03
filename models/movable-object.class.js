@@ -41,6 +41,10 @@ class MovableObject {
 		}
 	}
 
+	isDead() {
+		return this.life == 0;
+	}
+
 	loadImage(imgPath) {
 		this.img = new Image();
 		this.img.src = imgPath;
