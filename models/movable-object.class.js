@@ -1,11 +1,5 @@
-class MovableObject {
-	y = 0;
-	width = 310;
-	height = 610;
-	img;
-	ImagesForMovement = {};
+class MovableObject extends DrawableObject {
 	IMGAGES_WALKING = [];
-	currentImageStep = 0;
 	speed = 0.1;
 	flipObjectDirection = false;
 	speedY = 5;
@@ -51,23 +45,6 @@ class MovableObject {
 
 	isDead() {
 		return this.life == 0;
-	}
-
-	loadImage(imgPath) {
-		this.img = new Image();
-		this.img.src = imgPath;
-	}
-
-	loadImagesForMovement(movementImgs) {
-		movementImgs.forEach((path) => {
-			let img = new Image();
-			img.src = path;
-			this.ImagesForMovement[path] = img;
-		});
-	}
-
-	draw(ctx) {
-		ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
 	}
 
 	drawFrame(ctx) {
