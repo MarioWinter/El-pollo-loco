@@ -43,10 +43,10 @@ class Character extends MovableObject {
 	constructor() {
 		super().loadImage(this.IMGAGES_WALKING[0]);
 		this.x = 100;
-		this.loadImagesForMovement(this.IMGAGES_WALKING);
-		this.loadImagesForMovement(this.IMGAGES_JUMPING);
-		this.loadImagesForMovement(this.IMGAGES_DEAD);
-		this.loadImagesForMovement(this.IMGAGES_HURT);
+		this.loadImageCache(this.IMGAGES_WALKING);
+		this.loadImageCache(this.IMGAGES_JUMPING);
+		this.loadImageCache(this.IMGAGES_DEAD);
+		this.loadImageCache(this.IMGAGES_HURT);
 		this.animate();
 		this.applayGravity();
 	}

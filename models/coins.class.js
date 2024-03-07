@@ -8,7 +8,7 @@ class Coins extends MovableObject {
 
 		this.x = 600 + Math.random() * 1960;
 		this.y = 400 + Math.random() * 500;
-		this.loadImagesForMovement(this.IMGAGES_WALKING);
+		this.loadImageCache(this.IMGAGES_WALKING);
 		this.animate(150);
 	}
 

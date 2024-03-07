@@ -3,6 +3,7 @@ class World {
 	canvas;
 	keyboard;
 	character = new Character();
+	statusbar = new StatusBar();
 	level = level1;
 	camera_x = 0;
 
@@ -35,6 +36,7 @@ class World {
 
 	draw() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.drawOnCanvas(this.statusbar);
 		this.ctx.translate(this.camera_x, 0);
 		this.addObjectsToCanvas(this.level.backgroundObject);
 		this.addObjectsToCanvas(this.level.clouds);

@@ -1,5 +1,4 @@
 class MovableObject extends DrawableObject {
-	IMGAGES_WALKING = [];
 	speed = 0.1;
 	flipObjectDirection = false;
 	speedY = 5;
@@ -47,20 +46,6 @@ class MovableObject extends DrawableObject {
 		return this.life == 0;
 	}
 
-	drawFrame(ctx) {
-		if (
-			this instanceof Character ||
-			this instanceof Chicken ||
-			this instanceof Chicks
-		) {
-			ctx.beginPath();
-			ctx.lineWidth = "5";
-			ctx.strokeStyle = "blue";
-			ctx.rect(this.x, this.y, this.width, this.height);
-			ctx.stroke();
-		}
-	}
-
 	moveRight() {
 		this.x += this.speed;
 		this.flipObjectDirection = false;
@@ -78,7 +63,7 @@ class MovableObject extends DrawableObject {
 	playAnimation(images) {
 		let step = this.currentImageStep % images.length;
 		let path = images[step];
-		this.img = this.ImagesForMovement[path];
+		this.img = this.ImageCache[path];
 		this.currentImageStep++;
 	}
 }
