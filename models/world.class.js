@@ -3,7 +3,7 @@ class World {
 	canvas;
 	keyboard;
 	character = new Character();
-	statusbar = new StatusBar();
+	statusbarLife = new StatusBarLife();
 	level = level1;
 	camera_x = 0;
 
@@ -25,7 +25,7 @@ class World {
 			this.level.enemies.forEach((enemy) => {
 				if (this.character.isColliding(enemy)) {
 					this.character.hit();
-					this.statusbar.setLifeOnStatusbar(this.character.life);
+					this.statusbarLife.setLifeOnStatusbar(this.character.life);
 				}
 			});
 		}, 200);
@@ -41,7 +41,7 @@ class World {
 		this.drawOnCanvas(this.character);
 		this.addObjectsToCanvas(this.level.enemies);
 		this.ctx.translate(-this.camera_x, 0);
-		this.drawOnCanvas(this.statusbar);
+		this.drawOnCanvas(this.statusbarLife);
 		requestAnimationFrame(() => {
 			this.draw();
 		});
