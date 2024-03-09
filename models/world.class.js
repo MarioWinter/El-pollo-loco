@@ -4,6 +4,8 @@ class World {
 	keyboard;
 	character = new Character();
 	statusbarLife = new StatusBarLife();
+	statusbarCoins = new StatusBarCoins();
+	statusbarBottle = new StatusBarBottle();
 	level = level1;
 	camera_x = 0;
 
@@ -42,6 +44,8 @@ class World {
 		this.addObjectsToCanvas(this.level.enemies);
 		this.ctx.translate(-this.camera_x, 0);
 		this.drawOnCanvas(this.statusbarLife);
+		this.drawOnCanvas(this.statusbarCoins);
+		this.drawOnCanvas(this.statusbarBottle);
 		requestAnimationFrame(() => {
 			this.draw();
 		});

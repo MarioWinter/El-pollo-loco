@@ -1,6 +1,4 @@
 class StatusBarLife extends DrawableObject {
-	x;
-	y;
 	IMAGES_HEALTH = [
 		"./img/7_statusbars/1_statusbar/2_statusbar_health/blue/0.png",
 		"./img/7_statusbars/1_statusbar/2_statusbar_health/blue/20.png",
@@ -16,7 +14,7 @@ class StatusBarLife extends DrawableObject {
 		this.width = 416.5;
 		this.height = 110.6;
 		this.x = 50;
-		this.y = 5;
+		this.y = 0;
 		this.loadImageCache(this.IMAGES_HEALTH);
 		this.setLifeOnStatusbar(100);
 	}
