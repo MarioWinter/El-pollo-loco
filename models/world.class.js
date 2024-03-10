@@ -6,6 +6,7 @@ class World {
 	statusbarLife = new StatusBarLife();
 	statusbarCoins = new StatusBarCoins();
 	statusbarBottle = new StatusBarBottle();
+	throwableObject = [new ThrowableObject()];
 	level = level1;
 	camera_x = 0;
 
@@ -35,14 +36,16 @@ class World {
 
 	draw() {
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
 		this.ctx.translate(this.camera_x, 0);
 		this.addObjectsToCanvas(this.level.backgroundObject);
 		this.addObjectsToCanvas(this.level.clouds);
 		this.addObjectsToCanvas(this.level.tools);
-
 		this.drawOnCanvas(this.character);
 		this.addObjectsToCanvas(this.level.enemies);
+		this.addObjectsToCanvas(this.throwableObject);
 		this.ctx.translate(-this.camera_x, 0);
+
 		this.drawOnCanvas(this.statusbarLife);
 		this.drawOnCanvas(this.statusbarCoins);
 		this.drawOnCanvas(this.statusbarBottle);
