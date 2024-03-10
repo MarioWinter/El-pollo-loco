@@ -24,6 +24,10 @@ document.addEventListener("keydown", function (event) {
 	if (event.key === " ") {
 		keyboard.SPACE = true;
 	}
+
+	if (event.key === "d") {
+		keyboard.D = true;
+	}
 });
 
 document.addEventListener("keyup", function (event) {
@@ -45,6 +49,10 @@ document.addEventListener("keyup", function (event) {
 
 	if (event.key === " ") {
 		keyboard.SPACE = false;
+	}
+
+	if (event.key === "d") {
+		keyboard.D = false;
 	}
 });
 
