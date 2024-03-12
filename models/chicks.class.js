@@ -15,6 +15,10 @@ class Chicks extends MovableObject {
 		this.loadImageCache(this.IMGAGES_WALKING);
 		this.animate(100);
 		this.speed = 1 + Math.random() * 0.5;
+		this.offset.top = 20;
+		this.offset.bottom = 30;
+		this.offset.left = 20;
+		this.offset.right = 30;
 	}
 
 	animate(animateTime) {
