@@ -29,6 +29,7 @@ class World {
 			this.checkCollisions();
 			this.checkThrowObjects();
 			this.checkPickupBottle();
+			this.checkPickupCoin();
 		}, 150);
 	}
 
@@ -44,15 +45,29 @@ class World {
 	checkPickupBottle() {
 		this.level.bottles.forEach((bottle, index) => {
 			if (this.character.isColliding(bottle)) {
-				this.removeBottlefromLevel(index);
+				this.removeBottleFromLevel(index);
 				// this.character.pickUp();
 				// this.statusbarLife.setLifeOnStatusbar(this.character.life);
 			}
 		});
 	}
 
-	removeBottlefromLevel(index) {
+	checkPickupCoin() {
+		this.level.coins.forEach((coin, index) => {
+			if (this.character.isColliding(coin)) {
+				this.removeCoinFromLevel(index);
+				// this.character.pickUp();
+				// this.statusbarLife.setLifeOnStatusbar(this.character.life);
+			}
+		});
+	}
+
+	removeBottleFromLevel(index) {
 		this.level.bottles.splice(index, 1);
+	}
+
+	removeCoinFromLevel(index) {
+		this.level.coins.splice(index, 1);
 	}
 
 	checkThrowObjects() {
