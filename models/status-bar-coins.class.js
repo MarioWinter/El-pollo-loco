@@ -16,7 +16,7 @@ class StatusBarCoins extends DrawableObject {
 		this.x = 50;
 		this.y = 100;
 		this.loadImageCache(this.IMAGES_COINS);
-		this.setCoinsOnStatusbar(100);
+		this.setCoinsOnStatusbar(0);
 	}
 
 	setCoinsOnStatusbar(percentage) {

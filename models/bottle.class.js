@@ -1,4 +1,4 @@
-class Bottle extends MovableObject {
+class Bottle extends PickableObject {
 	y = 1130;
 	x = 0;
 	width = 120;

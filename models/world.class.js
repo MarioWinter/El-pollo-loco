@@ -6,7 +6,7 @@ class World {
 	statusbarLife = new StatusBarLife();
 	statusbarCoins = new StatusBarCoins();
 	statusbarBottle = new StatusBarBottle();
-	throwableObjects = [new ThrowableObject()];
+	throwableObjects = [];
 	level = level1;
 	camera_x = 0;
 
@@ -16,6 +16,7 @@ class World {
 		this.keyboard = keyboard;
 		this.draw();
 		this.setWorld();
+
 		this.runIntervals();
 	}
 
@@ -27,6 +28,7 @@ class World {
 		setInterval(() => {
 			this.checkCollisions();
 			this.checkThrowObjects();
+			this.checkPickupBottle();
 		}, 150);
 	}
 
@@ -37,6 +39,20 @@ class World {
 				this.statusbarLife.setLifeOnStatusbar(this.character.life);
 			}
 		});
+	}
+
+	checkPickupBottle() {
+		this.level.bottles.forEach((bottle, index) => {
+			if (this.character.isColliding(bottle)) {
+				this.removeBottlefromLevel(index);
+				// this.character.pickUp();
+				// this.statusbarLife.setLifeOnStatusbar(this.character.life);
+			}
+		});
+	}
+
+	removeBottlefromLevel(index) {
+		this.level.bottles.splice(index, 1);
 	}
 
 	checkThrowObjects() {
@@ -55,7 +71,8 @@ class World {
 		this.ctx.translate(this.camera_x, 0);
 		this.addObjectsToCanvas(this.level.backgroundObject);
 		this.addObjectsToCanvas(this.level.clouds);
-		this.addObjectsToCanvas(this.level.tools);
+		this.addObjectsToCanvas(this.level.bottles);
+		this.addObjectsToCanvas(this.level.coins);
 		this.drawOnCanvas(this.character);
 		this.addObjectsToCanvas(this.level.enemies);
 		this.addObjectsToCanvas(this.throwableObjects);

@@ -16,7 +16,7 @@ class StatusBarBottle extends DrawableObject {
 		this.x = 50;
 		this.y = 200;
 		this.loadImageCache(this.IMAGES_BOTTLE);
-		this.setBottleOnStatusbar(100);
+		this.setBottleOnStatusbar(0);
 	}
 
 	setBottleOnStatusbar(percentage) {

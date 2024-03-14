@@ -28,15 +28,6 @@ class MovableObject extends DrawableObject {
 		);
 	}
 
-	isCollidingFrame(mo) {
-		return (
-			this.x + this.width > mo.x &&
-			this.y + this.height > mo.y &&
-			this.x < mo.x &&
-			this.y < mo.y + mo.height
-		);
-	}
-
 	hit() {
 		this.life -= 5;
 		if (this.life < 0) {
