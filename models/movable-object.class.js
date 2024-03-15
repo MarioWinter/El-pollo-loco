@@ -38,7 +38,7 @@ class MovableObject extends DrawableObject {
 			this.lastHit = new Date().getTime();
 		}
 	}
-	//pickableBottles = 4
+
 	pickUpItem(pickableBottles) {
 		if (pickableBottles < 5 && pickableBottles >= 0) {
 			this.bottles++;

@@ -48,11 +48,7 @@ class World {
 			if (this.character.isColliding(bottle)) {
 				this.removeBottleFromLevel(index);
 				this.character.pickUpItem(this.level.bottles.length);
-				console.log(this.level.bottles.length);
-				console.log(this.character.bottles);
-				this.statusbarBottle.setBottleOnStatusbar(
-					this.character.bottles
-				);
+				this.addBottlesToStatusbar();
 			}
 		});
 	}
@@ -77,13 +73,23 @@ class World {
 	}
 
 	checkThrowObjects() {
-		if (this.keyboard.D) {
+		if (this.keyboard.D && this.character.bottles > 0) {
 			let bottle = new ThrowableObject(
 				this.character.x + 200,
 				this.character.y + 250
 			);
 			this.throwableObjects.push(bottle);
+			this.reduceBottlesFromStatusbar();
 		}
+	}
+
+	addBottlesToStatusbar() {
+		this.statusbarBottle.setBottleOnStatusbar(this.character.bottles);
+	}
+
+	reduceBottlesFromStatusbar() {
+		this.character.bottles--;
+		this.statusbarBottle.setBottleOnStatusbar(this.character.bottles);
 	}
 
 	draw() {
