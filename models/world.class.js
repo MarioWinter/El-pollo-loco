@@ -49,7 +49,10 @@ class World {
 				this.removeBottleFromLevel(index);
 				this.character.pickUpItem(this.level.bottles.length);
 				console.log(this.level.bottles.length);
-				//this.statusbarBottle.setBottleOnStatusbar(this.character.life);
+				console.log(this.character.bottles);
+				this.statusbarBottle.setBottleOnStatusbar(
+					this.character.bottles
+				);
 			}
 		});
 	}

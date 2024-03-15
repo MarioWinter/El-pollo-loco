@@ -40,7 +40,7 @@ class MovableObject extends DrawableObject {
 	}
 	//pickableBottles = 4
 	pickUpItem(pickableBottles) {
-		if (pickableBottles < 5 && pickableBottles > 0) {
+		if (pickableBottles < 5 && pickableBottles >= 0) {
 			this.bottles++;
 		}
 	}
