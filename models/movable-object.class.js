@@ -5,6 +5,8 @@ class MovableObject extends DrawableObject {
 	acceleration = 2;
 	life = 100;
 	lastHit = 0;
+	bottles = 0;
+	coins = 0;
 
 	applayGravity() {
 		setInterval(() => {
@@ -34,6 +36,12 @@ class MovableObject extends DrawableObject {
 			this.life = 0;
 		} else {
 			this.lastHit = new Date().getTime();
+		}
+	}
+	//pickableBottles = 4
+	pickUpItem(pickableBottles) {
+		if (pickableBottles < 5 && pickableBottles > 0) {
+			this.bottles++;
 		}
 	}
 

@@ -2,6 +2,7 @@ class World {
 	ctx;
 	canvas;
 	keyboard;
+	pickableObject = new PickableObject();
 	character = new Character();
 	statusbarLife = new StatusBarLife();
 	statusbarCoins = new StatusBarCoins();
@@ -46,8 +47,9 @@ class World {
 		this.level.bottles.forEach((bottle, index) => {
 			if (this.character.isColliding(bottle)) {
 				this.removeBottleFromLevel(index);
-				// this.character.pickUp();
-				// this.statusbarLife.setLifeOnStatusbar(this.character.life);
+				this.character.pickUpItem(this.level.bottles.length);
+				console.log(this.level.bottles.length);
+				//this.statusbarBottle.setBottleOnStatusbar(this.character.life);
 			}
 		});
 	}
@@ -56,7 +58,8 @@ class World {
 		this.level.coins.forEach((coin, index) => {
 			if (this.character.isColliding(coin)) {
 				this.removeCoinFromLevel(index);
-				// this.character.pickUp();
+				//this.character.pickUpItem(this.level.bottles.length);
+				//console.log(this.level.bottles.length);
 				// this.statusbarLife.setLifeOnStatusbar(this.character.life);
 			}
 		});

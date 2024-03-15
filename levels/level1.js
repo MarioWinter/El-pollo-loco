@@ -111,18 +111,7 @@ const level1 = new Level(
 			2560 * 5
 		),
 	],
-	[
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-		new Bottle(),
-	],
+	[new Bottle(), new Bottle(), new Bottle(), new Bottle(), new Bottle()],
 	[
 		new Coins(),
 		new Coins(),

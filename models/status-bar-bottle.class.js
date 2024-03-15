@@ -7,7 +7,7 @@ class StatusBarBottle extends DrawableObject {
 		"./img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/80.png",
 		"./img/7_statusbars/1_statusbar/3_statusbar_bottle/blue/100.png",
 	];
-	statusBottle = 100;
+	statusBottle = 0;
 
 	constructor() {
 		super();
@@ -27,13 +27,13 @@ class StatusBarBottle extends DrawableObject {
 	}
 
 	resolveImageIndex() {
-		return this.statusBottle > 80
+		return this.statusBottle > 4
 			? 5
-			: this.statusBottle > 60
+			: this.statusBottle > 3
 			? 4
-			: this.statusBottle > 40
+			: this.statusBottle > 2
 			? 3
-			: this.statusBottle > 20
+			: this.statusBottle > 1
 			? 2
 			: this.statusBottle > 0
 			? 1
