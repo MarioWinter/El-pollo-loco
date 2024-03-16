@@ -53,6 +53,7 @@ class World {
 			this.throwableObjects.forEach((bottle) => {
 				if (bottle.isColliding(enemy)) {
 					console.log("Enemy Hit!!");
+					bottle.stopThrowing();
 				}
 			});
 		});
