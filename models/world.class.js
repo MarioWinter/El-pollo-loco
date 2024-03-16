@@ -35,11 +35,26 @@ class World {
 	}
 
 	checkCollisions() {
+		this.checkCollisionWithCharacter();
+		this.checkCollisionWithBottle();
+	}
+
+	checkCollisionWithCharacter() {
 		this.level.enemies.forEach((enemy) => {
 			if (this.character.isColliding(enemy)) {
 				this.character.hit();
 				this.statusbarLife.setLifeOnStatusbar(this.character.life);
 			}
+		});
+	}
+
+	checkCollisionWithBottle() {
+		this.level.enemies.forEach((enemy) => {
+			this.throwableObjects.forEach((bottle) => {
+				if (bottle.isColliding(enemy)) {
+					console.log("Enemy Hit!!");
+				}
+			});
 		});
 	}
 
