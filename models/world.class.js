@@ -31,6 +31,7 @@ class World {
 			this.checkThrowObjects();
 			this.checkPickupBottle();
 			this.checkPickupCoin();
+			//this.checkKillAChicken();
 		}, 150);
 	}
 
@@ -80,12 +81,26 @@ class World {
 		});
 	}
 
+	checkKillAChicken() {
+		this.level.enemies.forEach((enemy, index) => {
+			if (enemy.isCollidingFromAbove(this.character)) {
+				console.log("Enemy Kill");
+				//enemy.dead();
+				//this.removeChickenFromLevel(index);
+			}
+		});
+	}
+
 	removeBottleFromLevel(index) {
 		this.level.bottles.splice(index, 1);
 	}
 
 	removeCoinFromLevel(index) {
 		this.level.coins.splice(index, 1);
+	}
+
+	removeChickenFromLevel(index) {
+		this.level.enemies.splice(index, 1);
 	}
 
 	checkThrowObjects() {

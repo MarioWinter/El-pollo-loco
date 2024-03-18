@@ -1,4 +1,6 @@
 class Character extends MovableObject {
+	charAnimation;
+	charWalkingAnimation;
 	y = 660;
 	width = 310;
 	height = 610;
@@ -43,10 +45,10 @@ class Character extends MovableObject {
 	constructor() {
 		super().loadImage(this.IMGAGES_WALKING[0]);
 		this.x = 100;
-		this.offset.top = 290;
-		this.offset.bottom = 130;
-		this.offset.left = 60;
-		this.offset.right = 140;
+		this.offset.top = 230;
+		this.offset.bottom = 150;
+		this.offset.left = 20;
+		this.offset.right = 70;
 		this.loadImageCache(this.IMGAGES_WALKING);
 		this.loadImageCache(this.IMGAGES_JUMPING);
 		this.loadImageCache(this.IMGAGES_DEAD);
@@ -56,7 +58,7 @@ class Character extends MovableObject {
 	}
 
 	animate() {
-		setInterval(() => {
+		this.charWalkingAnimation = setInterval(() => {
 			this.walking_sound.pause();
 			if (
 				this.world.keyboard.RIGHT &&
@@ -84,16 +86,28 @@ class Character extends MovableObject {
 			this.world.camera_x = -this.x + 200;
 		}, 1000 / 60);
 
-		setInterval(() => {
-			if (this.isDead()) {
-				this.playAnimation(this.IMGAGES_DEAD);
-			} else if (this.isHurt()) {
+		this.charAnimation = setInterval(() => {
+			this.characterIsDead();
+			if (this.isHurt()) {
 				this.playAnimation(this.IMGAGES_HURT);
 			} else if (this.isAboveGround()) {
 				this.playAnimation(this.IMGAGES_JUMPING);
 			} else {
 				if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
 					this.playAnimation(this.IMGAGES_WALKING);
+				}
+			}
+		}, 50);
+	}
+
+	characterIsDead() {
+		let counter = 0;
+		setInterval(() => {
+			if (this.isDead()) {
+				this.playAnimation(this.IMGAGES_DEAD);
+				counter++;
+				if (counter >= 7) {
+					clearInterval();
 				}
 			}
 		}, 50);

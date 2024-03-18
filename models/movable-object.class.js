@@ -30,6 +30,14 @@ class MovableObject extends DrawableObject {
 		);
 	}
 
+	isCollidingFromAbove(mo) {
+		return (
+			this.x + this.width - this.offset.right >= mo.x + mo.offset.left &&
+			this.x + this.offset.left <= mo.x + mo.width - mo.offset.right &&
+			this.y + this.offset.top >= mo.y + mo.height - mo.offset.bottom
+		);
+	}
+
 	hit() {
 		this.life -= 5;
 		if (this.life < 0) {
