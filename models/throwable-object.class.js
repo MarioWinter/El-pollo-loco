@@ -43,7 +43,7 @@ class ThrowableObject extends MovableObject {
 
 	splashAnimation() {
 		let bottleSplash = setInterval(() => {
-			this.x += 5;
+			this.x += 10;
 			this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
 			this.counter++;
 			if (this.counter >= 6) {
