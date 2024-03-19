@@ -57,6 +57,7 @@ class World {
 			this.throwableObjects.forEach((bottle) => {
 				if (bottle.isColliding(enemy)) {
 					console.log("Enemy Hit!!");
+					enemy.dead();
 					bottle.stopThrowing();
 				}
 			});
@@ -91,8 +92,7 @@ class World {
 				this.character.isAboveGround()
 			) {
 				console.log("Enemy Kill");
-				//enemy.dead();
-				//this.removeChickenFromLevel(index);
+				enemy.dead();
 			}
 		});
 	}

@@ -7,6 +7,8 @@ class Chicks extends MovableObject {
 		"./img/3_enemies_chicken/chicken_small/1_walk/3_w.png",
 	];
 
+	IMAGES_DEAD = ["./img/3_enemies_chicken/chicken_small/2_dead/dead.png"];
+
 	constructor() {
 		super().loadImage(this.IMAGES_WALKING[0]);
 
@@ -35,9 +37,12 @@ class Chicks extends MovableObject {
 
 	dead() {
 		this.stopWalkingChicken();
-		this.speedY = 30;
+		this.speedY = -20;
 		this.applayGravity();
-		this.playAnimation(this.IMAGES_WALKING);
+		this.loadImage(this.IMAGES_DEAD);
+		setInterval(() => {
+			this.x += 30;
+		}, 50);
 	}
 
 	stopWalkingChicken() {

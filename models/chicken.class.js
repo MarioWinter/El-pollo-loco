@@ -36,9 +36,9 @@ class Chicken extends MovableObject {
 
 	dead() {
 		this.stopWalkingChicken();
-		this.speedY = 30;
+		this.speedY = -30;
 		this.applayGravity();
-		this.playAnimation(this.IMAGES_WALKING);
+		this.loadImage(this.IMAGES_DEAD);
 	}
 
 	stopWalkingChicken() {
