@@ -1,4 +1,5 @@
 class Keyboard {
+	isPressedD = false;
 	LEFT = false;
 	RIGHT = false;
 	UP = false;

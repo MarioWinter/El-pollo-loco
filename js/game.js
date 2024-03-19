@@ -26,7 +26,9 @@ document.addEventListener("keydown", function (event) {
 	}
 
 	if (event.key === "d") {
-		keyboard.D = true;
+		if (!keyboard.isPressedD) {
+			keyboard.D = true;
+		}
 	}
 });
 
@@ -53,6 +55,7 @@ document.addEventListener("keyup", function (event) {
 
 	if (event.key === "d") {
 		keyboard.D = false;
+		keyboard.isPressedD = false;
 	}
 });
 

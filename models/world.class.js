@@ -104,13 +104,18 @@ class World {
 	}
 
 	checkThrowObjects() {
-		if (this.keyboard.D && this.character.bottles > 0) {
+		if (
+			this.keyboard.D &&
+			this.character.bottles > 0 &&
+			!keyboard.isPressedD
+		) {
 			let bottle = new ThrowableObject(
 				this.character.x + 200,
 				this.character.y + 250
 			);
 			this.throwableObjects.push(bottle);
 			this.reduceBottlesFromStatusbar();
+			keyboard.isPressedD = true;
 		}
 	}
 
