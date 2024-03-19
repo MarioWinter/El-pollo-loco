@@ -31,7 +31,7 @@ class World {
 			this.checkThrowObjects();
 			this.checkPickupBottle();
 			this.checkPickupCoin();
-			//this.checkKillAChicken();
+			this.checkKillAChicken();
 		}, 150);
 	}
 
@@ -42,7 +42,10 @@ class World {
 
 	checkCollisionWithCharacter() {
 		this.level.enemies.forEach((enemy) => {
-			if (this.character.isColliding(enemy)) {
+			if (
+				this.character.isColliding(enemy) &&
+				!this.character.isAboveGround()
+			) {
 				this.character.hit();
 				this.statusbarLife.setLifeOnStatusbar(this.character.life);
 			}
@@ -83,7 +86,10 @@ class World {
 
 	checkKillAChicken() {
 		this.level.enemies.forEach((enemy, index) => {
-			if (enemy.isCollidingFromAbove(this.character)) {
+			if (
+				this.character.isColliding(enemy) &&
+				this.character.isAboveGround()
+			) {
 				console.log("Enemy Kill");
 				//enemy.dead();
 				//this.removeChickenFromLevel(index);

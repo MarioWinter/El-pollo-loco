@@ -46,7 +46,7 @@ class Character extends MovableObject {
 		super().loadImage(this.IMGAGES_WALKING[0]);
 		this.x = 100;
 		this.offset.top = 230;
-		this.offset.bottom = 150;
+		this.offset.bottom = 80;
 		this.offset.left = 20;
 		this.offset.right = 70;
 		this.loadImageCache(this.IMGAGES_WALKING);
