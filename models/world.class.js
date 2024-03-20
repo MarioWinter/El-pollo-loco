@@ -26,7 +26,7 @@ class World {
 	}
 
 	runIntervals() {
-		setInterval(() => {
+		setGameInterval(() => {
 			this.checkCollisions();
 			this.checkThrowObjects();
 			this.checkPickupBottle();
