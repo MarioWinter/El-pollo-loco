@@ -30,7 +30,7 @@ class ThrowableObject extends MovableObject {
 	throw() {
 		this.speedY = 30;
 		this.applayGravity();
-		this.rotateAnimation = setInterval(() => {
+		this.rotateAnimation = setGameInterval(() => {
 			this.x += 25;
 			this.playAnimation(this.IMAGES_BOTTLE);
 		}, 50);
@@ -42,7 +42,7 @@ class ThrowableObject extends MovableObject {
 	}
 
 	splashAnimation() {
-		let bottleSplash = setInterval(() => {
+		let bottleSplash = setGameInterval(() => {
 			this.x += 10;
 			this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
 			this.counter++;

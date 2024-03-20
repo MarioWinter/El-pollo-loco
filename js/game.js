@@ -3,7 +3,6 @@ let world;
 let windowWidth;
 let windowHeight;
 let keyboard = new Keyboard();
-let intervalIds = [];
 
 document.addEventListener("keydown", function (event) {
 	if (event.key === "ArrowRight") {
@@ -63,13 +62,4 @@ document.addEventListener("keyup", function (event) {
 function initGame() {
 	canvas = document.getElementById("myCanvas");
 	world = new World(canvas, keyboard);
-}
-
-function setGameInterval(fn, time) {
-	let id = setInterval(fn, time);
-	intervalIds.push(id);
-}
-
-function stopGame() {
-	intervalIds.forEach(clearInterval);
 }

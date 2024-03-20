@@ -26,11 +26,11 @@ class Chicks extends MovableObject {
 	}
 
 	animate(animateTime) {
-		this.moveLeftChicks = setInterval(() => {
+		this.moveLeftChicks = setGameInterval(() => {
 			this.moveLeft(false);
 		}, 1000 / 60);
 
-		this.walkingChicks = setInterval(() => {
+		this.walkingChicks = setGameInterval(() => {
 			this.playAnimation(this.IMAGES_WALKING);
 		}, animateTime);
 	}
@@ -40,7 +40,7 @@ class Chicks extends MovableObject {
 		this.speedY = -20;
 		this.applayGravity();
 		this.loadImage(this.IMAGES_DEAD);
-		setInterval(() => {
+		setGameInterval(() => {
 			this.x += 30;
 		}, 50);
 	}

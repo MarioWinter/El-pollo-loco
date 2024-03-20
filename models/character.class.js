@@ -58,7 +58,7 @@ class Character extends MovableObject {
 	}
 
 	animate() {
-		this.charWalkingAnimation = setInterval(() => {
+		this.charWalkingAnimation = setGameInterval(() => {
 			this.walking_sound.pause();
 			if (
 				this.world.keyboard.RIGHT &&
@@ -86,7 +86,7 @@ class Character extends MovableObject {
 			this.world.camera_x = -this.x + 200;
 		}, 1000 / 60);
 
-		this.charAnimation = setInterval(() => {
+		this.charAnimation = setGameInterval(() => {
 			this.characterIsDead();
 			if (this.isHurt()) {
 				this.playAnimation(this.IMGAGES_HURT);
@@ -102,7 +102,7 @@ class Character extends MovableObject {
 
 	characterIsDead() {
 		let counter = 0;
-		setInterval(() => {
+		setGameInterval(() => {
 			if (this.isDead()) {
 				this.playAnimation(this.IMGAGES_DEAD);
 				counter++;
