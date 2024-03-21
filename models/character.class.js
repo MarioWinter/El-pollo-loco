@@ -14,6 +14,7 @@ class Character extends MovableObject {
 		"./img/2_character_pepe/2_walk/W-25.png",
 		"./img/2_character_pepe/2_walk/W-26.png",
 	];
+
 	IMGAGES_JUMPING = [
 		"./img/2_character_pepe/3_jump/J-31.png",
 		"./img/2_character_pepe/3_jump/J-32.png",
@@ -25,6 +26,7 @@ class Character extends MovableObject {
 		"./img/2_character_pepe/3_jump/J-38.png",
 		"./img/2_character_pepe/3_jump/J-39.png",
 	];
+
 	IMGAGES_DEAD = [
 		"./img/2_character_pepe/5_dead/D-51.png",
 		"./img/2_character_pepe/5_dead/D-52.png",
@@ -88,12 +90,14 @@ class Character extends MovableObject {
 
 		this.charAnimation = setGameInterval(() => {
 			this.characterIsDead();
+			this.characterIsJumping();
 			if (this.isHurt()) {
 				this.playAnimation(this.IMGAGES_HURT);
-			} else if (this.isAboveGround()) {
-				this.playAnimation(this.IMGAGES_JUMPING);
 			} else {
-				if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+				if (
+					(this.world.keyboard.RIGHT && !this.isAboveGround) ||
+					(this.world.keyboard.LEFT && !this.isAboveGround)
+				) {
 					this.playAnimation(this.IMGAGES_WALKING);
 				}
 			}
@@ -107,9 +111,31 @@ class Character extends MovableObject {
 				this.playAnimation(this.IMGAGES_DEAD);
 				counter++;
 				if (counter >= 7) {
-					clearInterval();
+					stopGame();
 				}
 			}
 		}, 50);
+	}
+
+	characterIsJumping() {
+		if (this.isAboveGround()) {
+			//this.playAnimation(this.IMGAGES_JUMPING);
+			console.log("y: " + this.y, "SpeedY: " + this.speedY);
+			if (this.speedY >= 27) {
+				this.loadImage(this.IMGAGES_JUMPING[0]);
+				this.loadImage(this.IMGAGES_JUMPING[1]);
+				this.loadImage(this.IMGAGES_JUMPING[2]);
+			} else if (this.speedY > 0) {
+				this.loadImage(this.IMGAGES_JUMPING[3]);
+			} else if (this.speedY <= 1) {
+				this.loadImage(this.IMGAGES_JUMPING[4]);
+				this.loadImage(this.IMGAGES_JUMPING[5]);
+			} else if (this.speedY >= -1) {
+				this.loadImage(this.IMGAGES_JUMPING[6]);
+			} else if (this.speedY > -25) {
+				this.loadImage(this.IMGAGES_JUMPING[7]);
+				this.loadImage(this.IMGAGES_JUMPING[8]);
+			}
+		}
 	}
 }

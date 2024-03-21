@@ -87,4 +87,13 @@ class MovableObject extends DrawableObject {
 		this.img = this.ImageCache[path];
 		this.currentImageStep++;
 	}
+
+	variableAnimation(images, start, stop) {
+		let step = this.currentImageStep % images.length;
+		if (step == start && step <= stop) {
+			let path = images[step];
+			this.img = this.ImageCache[path];
+		}
+		this.currentImageStep++;
+	}
 }
