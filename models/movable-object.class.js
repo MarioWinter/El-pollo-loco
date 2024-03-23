@@ -1,7 +1,7 @@
 class MovableObject extends DrawableObject {
 	speed = 0.1;
 	flipObjectDirection = false;
-	speedY = 5;
+	speedY = 2;
 	acceleration = 2;
 	life = 100;
 	lastHit = 0;
@@ -78,7 +78,7 @@ class MovableObject extends DrawableObject {
 	}
 
 	jump() {
-		this.speedY = 35;
+		this.speedY = 30;
 	}
 
 	playAnimation(images) {

@@ -7,7 +7,7 @@ class Character extends MovableObject {
 	width = 310;
 	height = 610;
 
-	speed = 25;
+	speed = 18;
 	IMAGES_WALKING = [
 		"./img/2_character_pepe/2_walk/W-21.png",
 		"./img/2_character_pepe/2_walk/W-22.png",
@@ -115,14 +115,9 @@ class Character extends MovableObject {
 			} else {
 				this.playAnimation(this.IMAGES_IDL);
 			}
-
 			this.characterIsDead();
 			this.characterIsJumping();
-		}, 80);
-
-		this.charMiddlSpeedAnimation = setGameInterval(() => {
-			//this.characterIsIdl();
-		}, 1_50);
+		}, 90);
 	}
 
 	characterIsDead() {
@@ -141,30 +136,14 @@ class Character extends MovableObject {
 	characterIsJumping() {
 		if (this.isAboveGround()) {
 			console.log("y: " + this.y, "SpeedY: " + this.speedY);
-			if (this.SpeedY >= 27) {
-				this.loadImage(this.IMAGES_JUMPING[0]);
-			} else if (this.speedY >= 1) {
-				this.loadImage(this.IMAGES_JUMPING[3]);
-			} else if (this.speedY <= 0) {
-				this.loadImage(this.IMAGES_JUMPING[4]);
-				this.loadImage(this.IMAGES_JUMPING[5]);
-			} else if (this.speedY >= -1) {
-				this.loadImage(this.IMAGES_JUMPING[6]);
-			} else if (this.speedY > -25) {
-				this.loadImage(this.IMAGES_JUMPING[7]);
-			}
-		}
-	}
-
-	characterIsIdl() {
-		if (
-			!this.world.keyboard.SPACE ||
-			!this.world.keyboard.UP ||
-			!this.world.keyboard.D ||
-			!this.world.keyboard.RIGHT ||
-			!this.world.keyboard.LEFT
-		) {
-			this.playAnimation(this.IMAGES_IDL);
+			let loadMovements = () => {
+				if (this.speedY >= 33) {
+					this.loadImage(this.IMAGES_JUMPING[0]);
+				} else if (this.speedY <= 27) {
+					this.loadImage(this.IMAGES_JUMPING[1]);
+				}
+			};
+			loadMovements();
 		}
 	}
 
