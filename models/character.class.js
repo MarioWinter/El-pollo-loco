@@ -137,10 +137,12 @@ class Character extends MovableObject {
 		if (this.isAboveGround()) {
 			console.log("y: " + this.y, "SpeedY: " + this.speedY);
 			let loadMovements = () => {
-				if (this.speedY >= 33) {
+				if (this.speedY >= 26) {
 					this.loadImage(this.IMAGES_JUMPING[0]);
-				} else if (this.speedY <= 27) {
+				} else if (this.speedY < 26) {
 					this.loadImage(this.IMAGES_JUMPING[1]);
+				} else if (this.speedY <= 22) {
+					this.loadImage(this.IMAGES_JUMPING[2]);
 				}
 			};
 			loadMovements();
