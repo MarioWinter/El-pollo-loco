@@ -1,13 +1,12 @@
 class Character extends MovableObject {
-	charHightSpeedAnimation;
-	charMiddlSpeedAnimation;
-	charLowSpeedAnimation;
+	charAnimation;
+	statJumpMotion = 0;
 	charMotion;
 	y = 660;
 	width = 310;
 	height = 610;
 
-	speed = 18;
+	speed = 15;
 	IMAGES_WALKING = [
 		"./img/2_character_pepe/2_walk/W-21.png",
 		"./img/2_character_pepe/2_walk/W-22.png",
@@ -98,13 +97,16 @@ class Character extends MovableObject {
 				(this.world.keyboard.SPACE && !this.isAboveGround()) ||
 				(this.world.keyboard.UP && !this.isAboveGround())
 			) {
-				this.jump();
+				this.statJumpMotion = new Date().getTime();
+				setTimeout(() => {
+					this.jump();
+				}, 100);
 			}
 
 			this.world.camera_x = -this.x + 200;
 		}, 1000 / 60);
 
-		this.charHightSpeedAnimation = setGameInterval(() => {
+		this.charAnimation = setGameInterval(() => {
 			if (this.isHurt()) {
 				this.playAnimation(this.IMAGES_HURT);
 			} else if (
@@ -117,7 +119,7 @@ class Character extends MovableObject {
 			}
 			this.characterIsDead();
 			this.characterIsJumping();
-		}, 90);
+		}, 95);
 	}
 
 	characterIsDead() {
@@ -127,7 +129,7 @@ class Character extends MovableObject {
 				this.playAnimation(this.IMAGES_DEAD);
 				counter++;
 				if (counter >= 7) {
-					stopGame();
+					//stopGame();
 				}
 			}
 		}, 50);
@@ -137,12 +139,16 @@ class Character extends MovableObject {
 		if (this.isAboveGround()) {
 			console.log("y: " + this.y, "SpeedY: " + this.speedY);
 			let loadMovements = () => {
-				if (this.speedY >= 26) {
+				if (this.speedY == 38) {
 					this.loadImage(this.IMAGES_JUMPING[0]);
-				} else if (this.speedY < 26) {
+				} else if (this.speedY == 36) {
 					this.loadImage(this.IMAGES_JUMPING[1]);
-				} else if (this.speedY <= 22) {
+				} else if (this.speedY == 34) {
 					this.loadImage(this.IMAGES_JUMPING[2]);
+				} else if (this.speedY >= 32) {
+					this.loadImage(this.IMAGES_JUMPING[3]);
+				} else if (this.speedY <= 4) {
+					this.loadImage(this.IMAGES_JUMPING[4]);
 				}
 			};
 			loadMovements();
@@ -153,5 +159,10 @@ class Character extends MovableObject {
 		if (!this.isAboveGround()) {
 			this.walking_sound.play();
 		}
+	}
+
+	getTimepassed() {
+		let timepassed = new Date().getTime() - this.lastHit;
+		return timepassed;
 	}
 }
