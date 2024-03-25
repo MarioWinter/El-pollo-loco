@@ -98,7 +98,7 @@ class Character extends MovableObject {
 			) {
 				setTimeout(() => {
 					this.jump();
-				}, 200);
+				}, 100);
 			}
 
 			this.world.camera_x = -this.x + 200;
@@ -141,10 +141,19 @@ class Character extends MovableObject {
 	characterIsJumping() {
 		console.log("y: " + this.y, "SpeedY: " + this.speedY);
 		let loadMovements = () => {
-			if (this.y == 660 && this.speedY == 0) {
+			if (
+				(this.y >= 600 && this.speedY == 0) ||
+				(this.y >= 600 && this.speedY == 30)
+			) {
 				this.loadImage(this.IMAGES_JUMPING[2]);
-			} else if (this.speedY < 34) {
+			} else if (this.y >= 510 && this.speedY == 30) {
 				this.loadImage(this.IMAGES_JUMPING[3]);
+			} else if (this.y >= 250 && this.speedY == 3) {
+				this.loadImage(this.IMAGES_JUMPING[4]);
+			} else if (this.y >= 250 && this.speedY == -3) {
+				this.loadImage(this.IMAGES_JUMPING[5]);
+			} else if (this.y > 250 && this.speedY < -3) {
+				this.loadImage(this.IMAGES_JUMPING[6]);
 			}
 		};
 		loadMovements();
