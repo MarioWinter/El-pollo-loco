@@ -1,6 +1,5 @@
 class Character extends MovableObject {
 	charAnimation;
-	statJumpMotion = 0;
 	charMotion;
 	y = 660;
 	width = 310;
@@ -97,10 +96,9 @@ class Character extends MovableObject {
 				(this.world.keyboard.SPACE && !this.isAboveGround()) ||
 				(this.world.keyboard.UP && !this.isAboveGround())
 			) {
-				this.statJumpMotion = new Date().getTime();
 				setTimeout(() => {
 					this.jump();
-				}, 100);
+				}, 200);
 			}
 
 			this.world.camera_x = -this.x + 200;
@@ -114,12 +112,17 @@ class Character extends MovableObject {
 				(this.world.keyboard.LEFT && !this.isAboveGround())
 			) {
 				this.playAnimation(this.IMAGES_WALKING);
-			} else {
+			} else if (!this.isAboveGround()) {
 				this.playAnimation(this.IMAGES_IDL);
 			}
 			this.characterIsDead();
-			this.characterIsJumping();
 		}, 95);
+
+		setGameInterval(() => {
+			if (this.isAboveGround() || this.world.keyboard.SPACE) {
+				this.characterIsJumping();
+			}
+		}, 1000 / 35);
 	}
 
 	characterIsDead() {
@@ -136,33 +139,20 @@ class Character extends MovableObject {
 	}
 
 	characterIsJumping() {
-		if (this.isAboveGround()) {
-			console.log("y: " + this.y, "SpeedY: " + this.speedY);
-			let loadMovements = () => {
-				if (this.speedY == 38) {
-					this.loadImage(this.IMAGES_JUMPING[0]);
-				} else if (this.speedY == 36) {
-					this.loadImage(this.IMAGES_JUMPING[1]);
-				} else if (this.speedY == 34) {
-					this.loadImage(this.IMAGES_JUMPING[2]);
-				} else if (this.speedY >= 32) {
-					this.loadImage(this.IMAGES_JUMPING[3]);
-				} else if (this.speedY <= 4) {
-					this.loadImage(this.IMAGES_JUMPING[4]);
-				}
-			};
-			loadMovements();
-		}
+		console.log("y: " + this.y, "SpeedY: " + this.speedY);
+		let loadMovements = () => {
+			if (this.y == 660 && this.speedY == 0) {
+				this.loadImage(this.IMAGES_JUMPING[2]);
+			} else if (this.speedY < 34) {
+				this.loadImage(this.IMAGES_JUMPING[3]);
+			}
+		};
+		loadMovements();
 	}
 
 	playWalkingSound() {
 		if (!this.isAboveGround()) {
 			this.walking_sound.play();
 		}
-	}
-
-	getTimepassed() {
-		let timepassed = new Date().getTime() - this.lastHit;
-		return timepassed;
 	}
 }
