@@ -92,14 +92,7 @@ class Character extends MovableObject {
 				this.playWalkingSound();
 			}
 
-			if (
-				(this.world.keyboard.SPACE && !this.isAboveGround()) ||
-				(this.world.keyboard.UP && !this.isAboveGround())
-			) {
-				setTimeout(() => {
-					this.jump();
-				}, 100);
-			}
+			this.isJumping();
 
 			this.world.camera_x = -this.x + 200;
 		}, 1000 / 60);
@@ -119,8 +112,8 @@ class Character extends MovableObject {
 		}, 95);
 
 		setGameInterval(() => {
-			if (this.isAboveGround() || this.world.keyboard.SPACE) {
-				this.characterIsJumping();
+			if (this.isAboveGround() && this.world.keyboard.SPACE) {
+				this.characterIsJumpingAnimation();
 			}
 		}, 1000 / 35);
 	}
@@ -138,7 +131,7 @@ class Character extends MovableObject {
 		}, 50);
 	}
 
-	characterIsJumping() {
+	characterIsJumpingAnimation() {
 		console.log("y: " + this.y, "SpeedY: " + this.speedY);
 		let loadMovements = () => {
 			if (
@@ -162,6 +155,22 @@ class Character extends MovableObject {
 	playWalkingSound() {
 		if (!this.isAboveGround()) {
 			this.walking_sound.play();
+		}
+	}
+
+	isJumping() {
+		if (
+			(this.world.keyboard.SPACE &&
+				!this.isAboveGround() &&
+				!this.world.keyboard.isPressedJump) ||
+			(this.world.keyboard.UP &&
+				!this.isAboveGround() &&
+				!this.world.keyboard.isPressedJump)
+		) {
+			setTimeout(() => {
+				this.jump();
+				this.world.keyboard.isPressedJump = true;
+			}, 100);
 		}
 	}
 }

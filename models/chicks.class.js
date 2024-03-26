@@ -21,8 +21,8 @@ class Chicks extends MovableObject {
 		this.speed = 1 + Math.random() * 0.5;
 		this.offset.top = 0;
 		this.offset.bottom = 0;
-		this.offset.left = 0;
-		this.offset.right = 0;
+		this.offset.left = 5;
+		this.offset.right = 5;
 	}
 
 	animate(animateTime) {

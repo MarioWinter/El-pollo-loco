@@ -14,7 +14,7 @@ document.addEventListener("keydown", function (event) {
 	}
 
 	if (event.key === "ArrowUp") {
-		keyboard.UP = true;
+		if (!keyboard.isPressedJump) keyboard.UP = true;
 	}
 
 	if (event.key === "ArrowDown") {
@@ -22,13 +22,11 @@ document.addEventListener("keydown", function (event) {
 	}
 
 	if (event.key === " ") {
-		keyboard.SPACE = true;
+		if (!keyboard.isPressedJump) keyboard.SPACE = true;
 	}
 
 	if (event.key === "d") {
-		if (!keyboard.isPressedD) {
-			keyboard.D = true;
-		}
+		if (!keyboard.isPressedD) keyboard.D = true;
 	}
 });
 
@@ -43,6 +41,7 @@ document.addEventListener("keyup", function (event) {
 
 	if (event.key === "ArrowUp") {
 		keyboard.UP = false;
+		keyboard.isPressedJump = false;
 	}
 
 	if (event.key === "ArrowDown") {
@@ -51,6 +50,7 @@ document.addEventListener("keyup", function (event) {
 
 	if (event.key === " ") {
 		keyboard.SPACE = false;
+		keyboard.isPressedJump = false;
 	}
 
 	if (event.key === "d") {
