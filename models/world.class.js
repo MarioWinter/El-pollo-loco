@@ -89,7 +89,8 @@ class World {
 		this.level.enemies.forEach((enemy, index) => {
 			if (
 				this.character.isColliding(enemy) &&
-				this.character.isAboveGround()
+				this.character.isAboveGround() &&
+				this.character.speedY < 0
 			) {
 				console.log("Enemy Kill");
 				enemy.dead();
