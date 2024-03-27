@@ -2,7 +2,6 @@ class World {
 	ctx;
 	canvas;
 	keyboard;
-	pickableObject = new PickableObject();
 	character = new Character();
 	statusbarLife = new StatusBarLife();
 	statusbarCoins = new StatusBarCoins();
@@ -56,12 +55,20 @@ class World {
 		this.level.enemies.forEach((enemy) => {
 			this.throwableObjects.forEach((bottle) => {
 				if (bottle.isColliding(enemy)) {
-					console.log("Enemy Hit!!");
 					enemy.dead();
 					bottle.stopThrowing();
 				}
 			});
 		});
+	}
+
+	checkIsHitBoss(enemy, bottle) {
+		if (this instanceof Endboss) {
+			if (bottle.isColliding(enemy)) {
+				enemy.hit();
+				bottle.stopThrowing();
+			}
+		}
 	}
 
 	checkPickupBottle() {
@@ -92,7 +99,6 @@ class World {
 				this.character.isAboveGround() &&
 				this.character.speedY < 0
 			) {
-				console.log("Enemy Kill");
 				enemy.dead();
 			}
 		});

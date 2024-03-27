@@ -132,7 +132,6 @@ class Character extends MovableObject {
 	}
 
 	characterIsJumpingAnimation() {
-		console.log("y: " + this.y, "SpeedY: " + this.speedY);
 		let loadMovements = () => {
 			if (
 				(this.y >= 600 && this.speedY == 0) ||
