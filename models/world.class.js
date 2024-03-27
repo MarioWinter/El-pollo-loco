@@ -31,7 +31,7 @@ class World {
 			this.checkPickupBottle();
 			this.checkPickupCoin();
 			this.checkKillAChicken();
-		}, 150);
+		}, 120);
 	}
 
 	checkCollisions() {
@@ -54,17 +54,27 @@ class World {
 	checkCollisionWithBottle() {
 		this.level.enemies.forEach((enemy) => {
 			this.throwableObjects.forEach((bottle) => {
-				if (bottle.isColliding(enemy)) {
-					enemy.dead();
-					bottle.stopThrowing();
-				}
+				this.isHitEnemyWithBottle(enemy, bottle);
+				this.isHitBossWithBottle(enemy, bottle);
 			});
 		});
 	}
 
-	checkIsHitBoss(enemy, bottle) {
-		if (this instanceof Endboss) {
+	isHitEnemyWithBottle(enemy, bottle) {
+		if (enemy instanceof Chicken || enemy instanceof Chicks) {
 			if (bottle.isColliding(enemy)) {
+				enemy.dead();
+				bottle.stopThrowing();
+			}
+		}
+	}
+
+	isHitBossWithBottle(enemy, bottle) {
+		if (enemy instanceof Endboss) {
+			if (
+				(bottle.isColliding(enemy) && enemy.isHurt()) ||
+				(bottle.isColliding(enemy) && enemy.lastHit == 0)
+			) {
 				enemy.hit();
 				bottle.stopThrowing();
 			}

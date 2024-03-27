@@ -2,7 +2,7 @@ class Endboss extends MovableObject {
 	y = 420;
 	width = 700;
 	height = 900;
-	life = 5;
+	life = 20;
 	IMAGES_WALKING = [
 		"./img/4_enemie_boss_chicken/2_alert/G5.png",
 		"./img/4_enemie_boss_chicken/2_alert/G6.png",
@@ -29,6 +29,7 @@ class Endboss extends MovableObject {
 
 	hit() {
 		this.life -= 1;
+		console.log(this.life);
 		if (this.life < 0) {
 			this.life = 0;
 		} else {
@@ -38,6 +39,6 @@ class Endboss extends MovableObject {
 
 	isHurt() {
 		let timepassed = new Date().getTime() - this.lastHit;
-		return timepassed < 500;
+		return timepassed > 800;
 	}
 }
