@@ -14,7 +14,8 @@ document.addEventListener("keydown", function (event) {
 	}
 
 	if (event.key === "ArrowUp") {
-		if (!keyboard.isPressedJump) keyboard.UP = true;
+		//
+		keyboard.UP = true;
 	}
 
 	if (event.key === "ArrowDown") {
@@ -22,7 +23,8 @@ document.addEventListener("keydown", function (event) {
 	}
 
 	if (event.key === " ") {
-		if (!keyboard.isPressedJump) keyboard.SPACE = true;
+		//if (!keyboard.isPressedJump)
+		keyboard.SPACE = true;
 	}
 
 	if (event.key === "d") {

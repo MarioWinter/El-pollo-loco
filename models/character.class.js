@@ -112,7 +112,7 @@ class Character extends MovableObject {
 		}, 95);
 
 		setGameInterval(() => {
-			if (this.isAboveGround() && this.world.keyboard.SPACE) {
+			if (this.isAboveGround() || this.world.keyboard.SPACE) {
 				this.characterIsJumpingAnimation();
 			}
 		}, 1000 / 35);
@@ -132,6 +132,7 @@ class Character extends MovableObject {
 	}
 
 	characterIsJumpingAnimation() {
+		console.log("y: " + this.y, "SpeedY: " + this.speedY);
 		let loadMovements = () => {
 			if (
 				(this.y >= 600 && this.speedY == 0) ||
@@ -168,7 +169,6 @@ class Character extends MovableObject {
 		) {
 			setTimeout(() => {
 				this.jump();
-				this.world.keyboard.isPressedJump = true;
 			}, 100);
 		}
 	}

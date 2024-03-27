@@ -107,7 +107,8 @@ class World {
 			if (
 				this.character.isColliding(enemy) &&
 				this.character.isAboveGround() &&
-				this.character.speedY < 0
+				this.character.speedY < 0 &&
+				(enemy instanceof Chicken || enemy instanceof Chicks)
 			) {
 				enemy.dead();
 			}
