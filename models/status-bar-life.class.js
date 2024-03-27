@@ -27,13 +27,13 @@ class StatusBarLife extends DrawableObject {
 	}
 
 	resolveImageIndex() {
-		return this.statusLife > 80
+		return this.statusLife == 100
 			? 5
-			: this.statusLife > 60
+			: this.statusLife > 75
 			? 4
-			: this.statusLife > 40
+			: this.statusLife > 55
 			? 3
-			: this.statusLife > 20
+			: this.statusLife > 35
 			? 2
 			: this.statusLife > 0
 			? 1
